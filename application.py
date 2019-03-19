@@ -4,6 +4,7 @@ from random import randrange
 from flask import Flask
 from prometheus_client import start_http_server, Counter
 import os
+import time
 
 app = Flask('kayenta-tester')
 c = Counter('requests', 'Number of requests served, by http code', ['http_code'])
@@ -28,6 +29,7 @@ def new_handle_request_html():
     os.environ['SUCCESS_RATE'] = "90"
     if randrange(1, 100) > int(os.environ['SUCCESS_RATE']):
         c.labels(http_code = '500').inc()
+        time.sleep(0.005)
         return "Internal Server Error\n", 500
     else:
         c.labels(http_code = '200').inc()
