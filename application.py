@@ -29,10 +29,10 @@ def new_handle_request_html():
     os.environ['SUCCESS_RATE'] = "90"
     if randrange(1, 100) > int(os.environ['SUCCESS_RATE']):
         c.labels(http_code = '500').inc()
-        time.sleep(0.005)
         return "Internal Server Error\n", 500
     else:
         c.labels(http_code = '200').inc()
+        time.sleep(0.005)
         return "Hello World!\n"
 
 start_http_server(8000)
