@@ -24,7 +24,7 @@ def handle_request_html():
         return "Hello World!\n"
 
 
-# New http handler for al
+# New http handler for all
 def new_handle_request_html():
     os.environ['SUCCESS_RATE'] = "90"
     if randrange(1, 100) > int(os.environ['SUCCESS_RATE']):
