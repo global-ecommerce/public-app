@@ -32,7 +32,6 @@ def new_handle_request_html():
         return "Internal Server Error\n", 500
     else:
         c.labels(http_code = '200').inc()
-        #sleep(0.
         return "Hello World!\n"
 
 start_http_server(8000)
