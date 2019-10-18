@@ -15,7 +15,7 @@ def hello():
 
 # http request handler for all
 def handle_request_html():
-    os.environ['SUCCESS_RATE'] = "90"
+    os.environ['SUCCESS_RATE'] = "80"
     if randrange(1, 100) > int(os.environ['SUCCESS_RATE']):
         c.labels(http_code = '500').inc()
         return "Internal Server Error\n", 500
